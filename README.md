@@ -21,7 +21,7 @@ glsl-vjay supports / will support the following features:
 
 
 𝖊𝖗𝖗𝖔𝖗 𝖉𝖎𝖋𝖋𝖚𝖘𝖎𝖔𝖓 remix 
-- [x] SPOUT SUPPORT
+- [x] SPOUT SUPPORT (120FPS when Disabling the VU)
 - [x] Keyboard shortcuts
   - (F) - FPS Display
   - (R) - Reload Shader (for live coding !!!!)
