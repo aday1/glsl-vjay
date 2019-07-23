@@ -28,3 +28,6 @@ glsl-vjay supports / will support the following features:
   - (Number Keys (or Shift Number keys)) - Lets you select up to 20 shaders
   - (-) Previous Shader
   - (+) - Next Shader
+
+
+-- Current branch WIP for https://breakcore.com.au/viewtopic.php?f=8&t=179
