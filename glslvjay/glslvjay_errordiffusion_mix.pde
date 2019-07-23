@@ -55,7 +55,7 @@ void settings() {
    public void keyPressed(){
 
   if(key == 'f') text(int(frameRate), 10, 30);
-  if(key == 'r') initCurrentShader();
+  if(key == 'r') restart(); // Reload the shader routine if editing outside - LIVECODING ENABLE!!!
   
   if(key == '1') currentShaderIdx = 1;
   if(key == '2') currentShaderIdx = 2;
@@ -77,13 +77,13 @@ void settings() {
   if(key == '&') currentShaderIdx = 17;
   if(key == '*') currentShaderIdx = 18;
   if(key == '(') currentShaderIdx = 19;
-  if(key == ')') currentShaderIdx = 20;
-  
-  
-    
-  
+  if(key == ')') currentShaderIdx = 20; 
   }
   
+  void restart() {
+  shaderList.clear();
+  setupShaders();
+  }
   
   
 
@@ -142,7 +142,7 @@ void draw() {
   // Display the finished PGraphics
   image(scene, 0, 0, width, height);
 
-  //debug: show fps (or hit R for glimpse)
+  //debug: show fps (or hit f for glimpse)
   textSize(30);
   fill(255);
   //text(int(frameRate), 10, 30);

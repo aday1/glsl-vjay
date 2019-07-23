@@ -25,7 +25,7 @@ void setupShaders() {
   galaxy.tex1files = new String[]{ "seamlesstex/" };
 
   //ringOfColor shader
-  GShader ringOfColor = new GShader("ringofcolor.glsl");
+  GShader ringOfColor = new GShader("ringofcolor.frag");
   shaderList.add(ringOfColor);
   galaxy.parameters.add(new Param("hideStars"));
   galaxy.tex1files = new String[]{ "seamlesstex/" };
@@ -124,111 +124,111 @@ void pick2(float val) {
     initCurrentShader();
   }
 }
-//void pick3(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 3;
-//    initCurrentShader();
-//  }
-//}
-//void pick4(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 4;
-//    initCurrentShader();
-//  }
-//}
-//void pick5(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 5;
-//    initCurrentShader();
-//  }
-//}
-//void pick6(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 6;
-//    initCurrentShader();
-//  }
-//}
-//void pick7(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 7;
-//    initCurrentShader();
-//  }
-//}
-//void pick8(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 8;
-//    initCurrentShader();
-//  }
-//}
-//void pick9(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 9;
-//    initCurrentShader();
-//  }
-//}
-//void pick10(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 10;
-//    initCurrentShader();
-//  }
-//}
-//void pick11(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 11;
-//    initCurrentShader();
-//  }
-//}
-//void pick12(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 12;
-//    initCurrentShader();
-//  }
-//}
-//void pick13(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 13;
-//    initCurrentShader();
-//  }
-//}
-//void pick14(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 14;
-//    initCurrentShader();
-//  }
-//}
-//void pick15(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 15;
-//    initCurrentShader();
-//  }
-//}
-//void pick16(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 16;
-//    initCurrentShader();
-//  }
-//}
-//void pick17(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 17;
-//    initCurrentShader();
-//  }
-//}
-//void pick18(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 18;
-//    initCurrentShader();
-//  }
-//}
-//void pick19(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 19;
-//    initCurrentShader();
-//  }
-//}
-//void pick20(float val) {
-//  if (val==0.0){
-//    currentShaderIdx = 20;
-//   initCurrentShader();
-//  }
-//}
+void pick3(float val) {
+  if (val==0.0){
+    currentShaderIdx = 3;
+    initCurrentShader();
+  }
+}
+void pick4(float val) {
+  if (val==0.0){
+    currentShaderIdx = 4;
+    initCurrentShader();
+  }
+}
+void pick5(float val) {
+  if (val==0.0){
+    currentShaderIdx = 5;
+    initCurrentShader();
+  }
+}
+void pick6(float val) {
+  if (val==0.0){
+    currentShaderIdx = 6;
+    initCurrentShader();
+  }
+}
+void pick7(float val) {
+  if (val==0.0){
+    currentShaderIdx = 7;
+    initCurrentShader();
+  }
+}
+void pick8(float val) {
+  if (val==0.0){
+    currentShaderIdx = 8;
+    initCurrentShader();
+  }
+}
+void pick9(float val) {
+  if (val==0.0){
+    currentShaderIdx = 9;
+    initCurrentShader();
+  }
+}
+void pick10(float val) {
+  if (val==0.0){
+    currentShaderIdx = 10;
+    initCurrentShader();
+  }
+}
+void pick11(float val) {
+  if (val==0.0){
+    currentShaderIdx = 11;
+    initCurrentShader();
+  }
+}
+void pick12(float val) {
+  if (val==0.0){
+    currentShaderIdx = 12;
+    initCurrentShader();
+  }
+}
+void pick13(float val) {
+  if (val==0.0){
+    currentShaderIdx = 13;
+    initCurrentShader();
+  }
+}
+void pick14(float val) {
+  if (val==0.0){
+    currentShaderIdx = 14;
+    initCurrentShader();
+  }
+}
+void pick15(float val) {
+  if (val==0.0){
+    currentShaderIdx = 15;
+    initCurrentShader();
+  }
+}
+void pick16(float val) {
+  if (val==0.0){
+    currentShaderIdx = 16;
+    initCurrentShader();
+  }
+}
+void pick17(float val) {
+  if (val==0.0){
+    currentShaderIdx = 17;
+    initCurrentShader();
+  }
+}
+void pick18(float val) {
+  if (val==0.0){
+    currentShaderIdx = 18;
+    initCurrentShader();
+  }
+}
+void pick19(float val) {
+  if (val==0.0){
+    currentShaderIdx = 19;
+    initCurrentShader();
+  }
+}
+void pick20(float val) {
+  if (val==0.0){
+    currentShaderIdx = 20;
+   initCurrentShader();
+  }
+}
