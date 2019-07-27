@@ -20,6 +20,8 @@ BeatListener bl;
 //osc
 OscP5 oscP5;
 NetAddress remoteAddr; //address of your mobile osc device
+NetAddress remoteAddr2; //address of Curtis osc device
+
 
 // Spout
 Spout spout;
@@ -78,7 +80,18 @@ void settings() {
   if(key == '*') currentShaderIdx = 18;
   if(key == '(') currentShaderIdx = 19;
   if(key == ')') currentShaderIdx = 20; 
+
+  if(key == 'a') curtis("aday", 1.0);
+  if(key == 'b') curtis("aday", 0.0);
+}
+
+
+  void curtis(String curtisAddr, Float curtisVal) {
+  OscMessage myMessage = new OscMessage(curtisAddr);
+  myMessage.add(curtisVal); /* add an int to the osc message */
+  oscP5.send(myMessage, remoteAddr2); 
   }
+
   
   void restart() {
   shaderList.clear();
@@ -92,7 +105,8 @@ void setup() {
   scene = createGraphics(int(vRes*vWidth), int(vRes*vHeight), P3D);
 
   //change this to the ip address of your mobile osc device
-  remoteAddr = new NetAddress("10.1.1.85", 8000);
+  remoteAddr = new NetAddress("10.1.1.85", 8000); // TOUCHOSC
+  remoteAddr2 = new NetAddress("10.1.1.130", 4020); // CURTIS
   
   //init minim
   minim = new Minim(this);
