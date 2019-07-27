@@ -178,7 +178,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     float px = 2.0/iResolution.y;
 
     // background
-    vec3 col = vec3(0.1*(1.0-0.3*length(p)));
+    vec3 col = vec3(0.1*(3.0-0.3*length(p)));
 
     // naive bbox
     float d = sdBox( p-(b1.xy+b1.zw)*0.5, (b1.zw-b1.xy)*0.5 );
