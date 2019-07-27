@@ -17,3 +17,17 @@ glsl-vjay supports / will support the following features:
   - [ ] smooth blending between two textures
 - [ ] map shader parameters to dynamic values from FFT, BeatDetection or Time
 - [ ] support for multipass / feedback shaders
+
+
+
+𝖊𝖗𝖗𝖔𝖗 𝖉𝖎𝖋𝖋𝖚𝖘𝖎𝖔𝖓 remix 
+- [x] SPOUT SUPPORT (120FPS when Disabling the VU)
+- [x] Keyboard shortcuts
+  - (F) - FPS Display
+  - (R) - Reload Shader (for live coding !!!!)
+  - (Number Keys (or Shift Number keys)) - Lets you select up to 20 shaders
+  - (-) Previous Shader
+  - (+) - Next Shader
+
+
+-- Current branch WIP for https://breakcore.com.au/viewtopic.php?f=8&t=179
