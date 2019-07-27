@@ -48,13 +48,7 @@ void setupShaders() {
   //linemorph.frag
 GShader linemorph = new GShader("linemorph.frag");
   shaderList.add(linemorph);
-  linemorph.parameters.add(new Param("ShiftUP",-0.5,5));
-  linemorph.parameters.add(new Param("Shift",-0.5,5));
-  linemorph.parameters.add(new Param("ShiftLineDistance",-0.5,5));
-  linemorph.parameters.add(new Param("ShiftHorizontal",-0.5,5));
-  linemorph.parameters.add(new Param("Shiftlinemorph",-0.5,5));
-  linemorph.parameters.add(new Param("ShiftY",-0.5,5));
-
+  
   
   
   // mathplot1.glsl FIRST
@@ -72,19 +66,7 @@ GShader linemorph = new GShader("linemorph.frag");
     // mathplot1.glsl FIRST
   GShader middlediamond = new GShader("middlediamond.frag");
   shaderList.add(middlediamond);
-  middlediamond.parameters.add(new Param("FADER1",-0.5,5));
   middlediamond.parameters.add(new Param("FADER2",-0.5,5));
-  middlediamond.parameters.add(new Param("FADER3",-0.5,5));
-  middlediamond.parameters.add(new Param("FADER4",-0.5,5));
-  middlediamond.parameters.add(new Param("FADER5",-0.5,5));
-  middlediamond.parameters.add(new Param("FADER6",-0.5,5));
-  middlediamond.parameters.add(new Param("FADER7",-0.5,5));
-  middlediamond.parameters.add(new Param("FADER8",-0.5,5));
-  middlediamond.parameters.add(new Param("FADER9",-0.5,5));
-  middlediamond.parameters.add(new Param("FADER10",-0.5,5));
-  middlediamond.parameters.add(new Param("FADER11",-0.5,5));
-  middlediamond.parameters.add(new Param("FADER12",-0.5,5));
-  
 
   
   
