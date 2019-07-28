@@ -31,8 +31,8 @@ vec4 iMouse = vec4(mouse.xy,mousePressed.xy);
 
 
 //shader specific uniforms
-uniform float brightness;
-uniform float rotation;
+uniform float Brightness;
+uniform float Rotation;
 
 
 // Created by inigo quilez - iq/2013
@@ -315,7 +315,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	freqs[3] = freq4;
 
     //-----------
-    float time = 5.0 + 0.2*iGlobalTime + 20.0*rotation;
+    float time = 5.0 + 0.2*iGlobalTime + 20.0*Rotation;
 
     vec3 tot = vec3(0.0);
     for( int i=0; i<1; i++ ) //antialias here
@@ -342,7 +342,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     
     // vigneting
 	vec2 q = fragCoord.xy/iResolution.xy;
-    tot *= brightness + 0.8*pow( 16.0*q.x*q.y*(1.0-q.x)*(1.0-q.y), 0.1 );
+    tot *= Brightness + 0.8*pow( 16.0*q.x*q.y*(1.0-q.x)*(1.0-q.y), 0.1 );
 
     fragColor=vec4( tot, 1.0 );
 
