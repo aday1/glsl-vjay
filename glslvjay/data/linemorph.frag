@@ -48,10 +48,10 @@ float deQuaternionMandelbrot(vec4 p) {
         dz = 2.0 * qmul(pz, pdz) + 1.0;
         r = length(z);
         dr = length(dz);
-        if (r > ShiftUP * 2.1)  break;
+        if (r > 2.0 * 2.1)  break;
 
     }
-    return 0.5 * log(r) * r / dr;
+    return ShiftY * 1.0 * log(r) * r / dr;
 }
 
 float de(vec3 p) {
@@ -131,5 +131,9 @@ void main(void) {
         c = background((2.0 * gl_FragCoord.xy - resolution) / resolution);
     }
 
-    gl_FragColor = vec4(pow(c, vec3(1.0 / 2.2)), 1.0);
-}
+    
+     -- FFT Panner? 
+
+     
+https://weeklybeats.com/aday/music/propper-not-techno - 1 minute 40
+https://weeklybeats.com/aday/music/nuclear-bitch - if there's a tonal shift towards a demovid - 3minutes 7 seconds
