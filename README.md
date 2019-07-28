@@ -28,6 +28,9 @@ glsl-vjay supports / will support the following features:
   - (-) Previous Shader
   - (+) - Next Shader
 
+  - Hit A to send ON to RemoteAddy2 (Curtis)
+  - Hit B to send OFF to RemoteAddy2 (Curtis)
+
   A foreground Shader for video routing running on port 4001 - Spouting at 640x480 (For a nice square video routing layer)
   A background Shader for video routing running on port 4000 - Spouting at 3200x360 (Maggies Art Space - Melbourne)
 

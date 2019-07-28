@@ -1,3 +1,6 @@
+// FOREGROUND PDE
+
+
 //use at your own risk. >processing 3.0 required
 //requires processing libraries "oscP5" and "minim" and "spout"
 
@@ -34,8 +37,8 @@ int oldMillis = 0;
 
 boolean doSlideshow = false;
 
-final int vWidth = 3200;
-final int vHeight = 360;
+final int vWidth = 640;
+final int vHeight = 480;
 
 final int bufferSize = 1024;
 
@@ -129,7 +132,7 @@ void setup() {
   
   surface.setLocation(1080, 0);
   spout = new Spout(this);
-  spout.createSender("GLSL-BACKGROUND");
+  spout.createSender("GLSL-FOREGROUND");
    spout.sendTexture();
   
   // background(0); // Why do I need this anyway? - I think its the border

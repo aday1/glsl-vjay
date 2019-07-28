@@ -1,3 +1,0 @@
-- add support for feedback shaders
-- implement minim beat detection
-- change osc layout for beat and frequency tuning
