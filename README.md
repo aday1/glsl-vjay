@@ -19,7 +19,6 @@ glsl-vjay supports / will support the following features:
 - [ ] support for multipass / feedback shaders
 
 
-
 𝖊𝖗𝖗𝖔𝖗 𝖉𝖎𝖋𝖋𝖚𝖘𝖎𝖔𝖓 remix 
 - [x] SPOUT SUPPORT (120FPS when Disabling the VU)
 - [x] Keyboard shortcuts
@@ -28,6 +27,12 @@ glsl-vjay supports / will support the following features:
   - (Number Keys (or Shift Number keys)) - Lets you select up to 20 shaders
   - (-) Previous Shader
   - (+) - Next Shader
+
+  A foreground Shader for video routing running on port 4001 - Spouting at 640x480 (For a nice square video routing layer)
+  A background Shader for video routing running on port 4000 - Spouting at 3200x360 (Maggies Art Space - Melbourne)
+
+- OSCMonitor.exe for routing between layers. (use echo)
+
 
 
 -- Current branch WIP for https://breakcore.com.au/viewtopic.php?f=8&t=179

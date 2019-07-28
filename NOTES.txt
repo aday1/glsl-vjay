@@ -1,0 +1,36 @@
+
+#define PROCESSING_COLOR_SHADER // shader compatibility
+
+SHADER LIST - OSC PORT 4005
+INTERNAL ROUTING PORT 4000 - BACKGROUND SHADER
+INTERNAL ROUTING PORT 4001 - FOREGROUND SHADER
+
+TouchOSC RECIEVE PORT 8000
+TouchOSC IP (at home) = 10.1.1.85
+
+CURTIS OSC RECIEVE PORT 4020
+CURTIC MAC IP (at home) = 10.1.1.130
+
+#define PROCESSING_COLOR_SHADER
+
+// specific input
+uniform float time;
+uniform vec2 resolution;
+uniform vec2 mouse;
+
+uniform float FX1;
+uniform float FX2;
+uniform float FX3;
+uniform float FX4;
+
+uniform float COL1;
+uniform float COL2;
+uniform float COL3;
+
+uniform float SHIFTX1;
+uniform float SHIFTY1;
+
+uniform float SHIFTX2;
+uniform float SHIFTY2;
+
+uniform float SCALE;
