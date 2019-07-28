@@ -1,139 +1,67 @@
-precision highp float;
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+#define PROCESSING_COLOR_SHADER
 
 uniform float time;
 uniform vec2 mouse;
 uniform vec2 resolution;
-#define PROCESSING_COLOR_SHADER
+const float n_circles = 80.;
+const float max_radius = .15;
+const float min_radius = .1;
+const float seed1 = 69.7;
+const float seed2 = 82.4;
+const float seed3 = 62.5;
 
+uniform float FX1;
 uniform float freq1;
 uniform float freq2;
 uniform float freq3;
 uniform float freq4;
 
 
-uniform float ShiftUP; 
-uniform float Shift;
-uniform float ShiftLineDistance;
-uniform float ShiftHorizontal;
-uniform float Shiftlinemorph;
-uniform float ShiftY;
-uniform float fader7;
-uniform float fader8;
-uniform float fader9;
-uniform float fader10;
-uniform float fader11;
-uniform float fader12;
 
-
-
-vec4 qmul(vec4 a, vec4 b) {
-    return vec4(
-        a.x * b.x - a.y * b.y - a.z * b.z - a.w * b.w,
-        a.x * b.y + a.y * b.x - a.z * b.w + a.w * b.z,
-        a.x * b.z + a.y * b.w + a.z * b.x - a.w * b.y,
-        a.x * b.w - a.y * b.z + a.z * b.y + a.w * b.x
-    );
+float rand(float x, float seed) {
+    return fract(sin(x) * seed);
 }
 
-#define ITERATIONS 16
-float deQuaternionMandelbrot(vec4 p) {
-    vec4 z = vec4(0.0);
-    vec4 dz = vec4(0.0);
-    vec4 pz, pdz;
-    float r, dr;
-    for (int i = 0; i < ITERATIONS; i++) {
-        pz = z;
-        z = qmul(pz, pz) + p;
-        pdz = dz;
-        dz = 2.0 * qmul(pz, pdz) + 1.0;
-        r = length(z);
-        dr = length(dz);
-        if (r > 2.0 * 2.1)  break;
+float randFromTo(float x, float seed, float min, float max){
+    return rand(x, seed) * (max - min) + min;
+}
 
+bool drawCircle(vec2 pos, vec2 center, float radius, inout vec3 color) {
+    vec2 translatedCenter = vec2(sin(time) * randFromTo(center.x, seed1, -1.8, 1.8) + center.x, sin(time) * randFromTo(center.y, seed1, -1., 1.) + center.y);
+    float distance = distance(pos, translatedCenter);
+    bool ret =  distance <= radius;
+    if (ret) {
+        float m = max (0.0, smoothstep(radius, radius / 9., distance));
+        color = vec3(abs(freq4) * m, abs(freq3) * m, abs(freq2 - freq1) * m);
     }
-    return ShiftY * 1.0 * log(r) * r / dr;
+    return ret;
 }
 
-float de(vec3 p) {
-    return deQuaternionMandelbrot(vec4(p - vec3(0.5, 0.0, 0.0), 0.0));
+bool drawCircleOnMousePosition(float minRes, vec2 pos, float radiusMultiplier, inout vec3 color) {
+    vec2 mousePosition = (mouse * resolution * 2. - resolution) / minRes;
+    return drawCircle(pos, mousePosition, .1 * radiusMultiplier, color);
 }
 
-vec3 calcNormal(vec3 p) {
-    float d = 0.001;
-    return normalize(vec3(
-        de(p + vec3(d, 0.0, 0.0)) - de(p - vec3(ShiftUP, freq1, freq3)),
-        de(p + vec3(0.0, d, 0.0)) - de(p - vec3(freq1, d, 0.0)),
-        de(p + vec3(0.0, 0.0, d)) - de(p - vec3(freq3, freq2, d))
-    ));
-}
-
-#define OCCLUSION_ITERATIONS 5
-float ambientOcclusion(vec3 pos, vec3 nor) {
-    float ao = 0.0;
-    float amp = 0.5;
-    float step = 2.02;
-    for (int i = 1; i < OCCLUSION_ITERATIONS; i++) {
-        vec3 p = pos + step * float(i) * nor;
-        float d = de(p);
-        ao += amp * ((step * float(i) - d) / (step * float(i)));
-        amp *= 0.5;
-    }
-    return 1.0 - ao;
-}
-
-const vec3 LIGHT_DIR = normalize(vec3(1.0, 2.8, 1.0));
-const vec3 DIFFUSE_COLOR = vec3(0.8);
-const vec3 AMBIENT_COLOR = vec3(0.2);
-vec3 shadeSurface(vec3 pos, vec3 nor) {
-    float dotNL = max(0.0, dot(nor, LIGHT_DIR));
-    vec3 dif = DIFFUSE_COLOR * dotNL;
-    float ao = ambientOcclusion(pos, nor);
-    vec3 amb = AMBIENT_COLOR * vec3(ao);
-    return dif + amb;
-}
-
-bool raymarch(vec3 ro, vec3 rd, out float t) {
-    vec3 p = ro;
-    t = 0.0;
-    for (int i = 0; i < 128; i++) {
-        float d = de(p);
-        p += d * rd;
-        t += d;
-        if (d < 0.002) {
-            return true;
+void drawCircles(vec2 pos, float radiusMultiplier, inout vec3 color) {
+    for (float i=0.; i<n_circles; i++){
+        if (drawCircle(pos, vec2(randFromTo(i, seed1, -7.8, 7.8), randFromTo(i, seed2, -1., 1.)), randFromTo(i, seed3, min_radius, max_radius) * radiusMultiplier, color)) {
+            break;
         }
     }
-    return false;
 }
 
-vec3 background(vec2 st) {
-    return mix(vec3(0.5), vec3(0.1), length(st) * 1.1);
+void main( void ) {
+    float minRes = min(resolution.x, resolution.y);
+    vec2 pos = (gl_FragCoord.xy * 2. - resolution) / minRes;
+    float radiusMultiplier = abs((FX1 - 1.0)); // SIZE
+    vec3 color = vec3(freq1, 0.1, 0.2);
+    //if (drawCircleOnMousePosition(minRes, pos, radiusMultiplier, color) == false) {
+        drawCircles(pos, radiusMultiplier, color);
+    //}
+    gl_FragColor = vec4(color, 2);
 }
 
-void main(void) {
-    vec2 st = (2.0 * gl_FragCoord.xy - resolution) / min(resolution.x, resolution.y);
-
-    vec3 ro = vec3(ShiftUP, 0.0, 2.5);
-    vec3 ta = vec3(0.0);
-    vec3 z = normalize(ta - ro);
-    vec3 up = vec3(ShiftLineDistance, 0.5, 0.0);
-    vec3 x = normalize(cross(z, up));
-    vec3 y = normalize(cross(x, z));
-    vec3 rd = normalize(x * st.x + y * st.y + z * 1.5);
-
-    vec3 c; 
-    float t;
-    if (raymarch(ro, rd, t)) {
-        vec3 pos = ro + t * rd;
-        vec3 nor = calcNormal(pos);
-        c = shadeSurface(pos, nor);
-    } else {
-        c = background((2.0 * gl_FragCoord.xy - resolution) / resolution);
-    }
-
-    
-     -- FFT Panner? 
-
-     
-https://weeklybeats.com/aday/music/propper-not-techno - 1 minute 40
-https://weeklybeats.com/aday/music/nuclear-bitch - if there's a tonal shift towards a demovid - 3minutes 7 seconds

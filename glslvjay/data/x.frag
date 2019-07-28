@@ -17,19 +17,22 @@ uniform float time;
 uniform vec2 resolution;
 uniform vec2 mouse;
 
-uniform float freq1;
-uniform float freq2;
-uniform float freq3;
-uniform float freq4;
+uniform float FX1;
+uniform float FX2;
+uniform float FX3;
+uniform float FX4;
 
-uniform float ShiftXUP;
-uniform float ShiftX;
-uniform float ShiftXLineDistance;
-uniform float  ShiftXHorizontal;
-uniform float  ShiftXX;
-uniform float  ShiftXY;
+uniform float COL1;
+uniform float COL2;
+uniform float COL3;
 
+uniform float SHIFTX1;
+uniform float SHIFTY1;
 
+uniform float SHIFTX2;
+uniform float SHIFTY2;
+
+uniform float SCALE;
 
 
 
@@ -44,20 +47,20 @@ void main( void ) {
 
 	vec2 position = gl_FragCoord.xy / resolution.y;
 	float max_x = resolution.x / resolution.y;
-	vec2 mouse_p = vec2(mouse.x * max_x, ShiftXUP);
+	vec2 mouse_p = vec2(FX2 * max_x, FX1);
 
-	float q = ShiftXY;
-	float src_f = TWO_PI * mix(25.0, 50.0, ShiftX);
-	float src_d = SRC_D * mix(50.1,  ShiftXX, ShiftXLineDistance);
+	float q = FX1;
+	float src_f = TWO_PI * mix(FX3 * 25.0, FX2 * 50.0, FX1 * 3.0);
+	float src_d = SRC_D * mix(SHIFTY2 * 50.1,  SHIFTX1, SHIFTX2);
 
 	for (float i = 0.0; i < SRC_N; i++) {
-		vec2 src_pos = vec2((max_x - src_d * (SRC_N - 1.0)) / 2.0 + float(i) * src_d,  ShiftXHorizontal);
+		vec2 src_pos = vec2((max_x - src_d * (SRC_N - 1.0)) / 2.0 + float(i) * src_d,  SHIFTY1);
 		float l = abs(abs(position.x-src_pos.x) - abs(position.y-src_pos.y));
 		if (l < SRC_R) {
 			gl_FragColor = vec4(1.0);
 			return;
 		}
-		q += sin(l * src_f + i * SRC_A - time * 10.0);
+		q += sin(l * src_f + i * SRC_A - time * FX4);
 	}
 	q /= SRC_N;
 	gl_FragColor = vec4(q * q);

@@ -16,56 +16,89 @@ void setupShaders() {
   shaderList.add(cubescape);
   cubescape.parameters.add(new Param("brightness",-0.5,5));
   cubescape.parameters.add(new Param("rotation",-1,1));
-  cubescape.tex1files = new String[]{ "wood1.jpg" };
+  cubescape.tex1files = new String[]{ "circuit.jpg" };
+ 
   
   //galaxy shader
   GShader galaxy = new GShader("galaxy.frag");
   shaderList.add(galaxy);
   galaxy.parameters.add(new Param("hideStars"));
-  galaxy.tex1files = new String[]{ "seamlesstex/" };
+  //galaxy.tex1files = new String[]{ "circuit.jpg" };
 
   //ringOfColor shader
-  GShader ringOfColor = new GShader("ringofcolor.frag");
-  shaderList.add(ringOfColor);
-  galaxy.parameters.add(new Param("hideStars"));
-  galaxy.tex1files = new String[]{ "seamlesstex/" };
+  //GShader ringOfColor = new GShader("ringofcolor.frag");
+  //shaderList.add(ringOfColor);
+  //galaxy.parameters.add(new Param("hideStars"));
+  //galaxy.tex1files = new String[]{ "seamlesstex/" };
   
 // x.glsl FIRST
   GShader x = new GShader("x.frag");
   shaderList.add(x);
-  x.parameters.add(new Param("ShiftXUP",-0.5,5));
-  x.parameters.add(new Param("ShiftX",-0.5,5));
-  x.parameters.add(new Param("ShiftXLineDistance",-0.5,5));
-  x.parameters.add(new Param("ShiftXHorizontal",-0.5,5));
-  x.parameters.add(new Param("ShiftXX",-0.5,5));
-  x.parameters.add(new Param("ShiftXY",-0.5,5));
+  x.parameters.add(new Param("FX1",-0.5,5));
+  x.parameters.add(new Param("FX2",-0.5,5));
+  x.parameters.add(new Param("FX3",-0.5,5));
+  x.parameters.add(new Param("FX4",-0.5,5));
+  
+  x.parameters.add(new Param("NONE",-0.5,5));
+  x.parameters.add(new Param("NONE",-0.5,5));
+  x.parameters.add(new Param("NONE",-0.5,5));
+  
+  x.parameters.add(new Param("SHIFTX1",-0.5,5));
+  x.parameters.add(new Param("SHIFTY1",-0.5,5));
+  x.parameters.add(new Param("SHIFTX2",-0.5,5));
+  x.parameters.add(new Param("SHIFTY2",-0.5,5));
+  x.parameters.add(new Param("NONE",-0.5,5));
+  // TOGGLES
+  x.parameters.add(new Param("NONE",-0.5,5));
+  x.parameters.add(new Param("NONE",-0.5,5));
+  x.parameters.add(new Param("NONE",-0.5,5));
+  x.parameters.add(new Param("NONE",-0.5,5));
+  x.parameters.add(new Param("NONE",-0.5,5));
+  
+   
   
    
  //GridXYConvertMouse.frag
   GShader GridXYConvertMouse = new GShader("GridXYConvertMouse.frag");
   shaderList.add(GridXYConvertMouse);
+  GridXYConvertMouse.parameters.add(new Param("SCALE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  // TOGGLES
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  GridXYConvertMouse.parameters.add(new Param("NONE",-0.5,5));
+  
  
   //linemorph.frag
 GShader linemorph = new GShader("linemorph.frag");
   shaderList.add(linemorph);
-  linemorph.parameters.add(new Param("ShiftUP",-0.5,5));
-  linemorph.parameters.add(new Param("Shift",-0.5,5));
-  linemorph.parameters.add(new Param("ShiftLineDistance",-0.5,5));
-  linemorph.parameters.add(new Param("ShiftHorizontal",-0.5,5));
-  linemorph.parameters.add(new Param("Shiftlinemorph",-0.5,5));
-  linemorph.parameters.add(new Param("ShiftY",-0.5,5));
+  linemorph.parameters.add(new Param("FX1",-0.5,5));
 
   
   
   // mathplot1.glsl FIRST
   GShader mathplot1 = new GShader("mathplot1.frag");
   shaderList.add(mathplot1);
-  mathplot1.parameters.add(new Param("ShiftXUP",-0.5,5));
-  mathplot1.parameters.add(new Param("ShiftX",-0.5,5));
-  mathplot1.parameters.add(new Param("ShiftXLineDistance",-0.5,5));
-  mathplot1.parameters.add(new Param("ShiftXHorizontal",-0.5,5));
-  mathplot1.parameters.add(new Param("ShiftXX",-0.5,5));
-  mathplot1.parameters.add(new Param("ShiftXY",-0.5,5));
+  
+  
+  mathplot1.parameters.add(new Param("FX1",-0.5,5));
+  mathplot1.parameters.add(new Param("FX2",-0.5,5));
+  mathplot1.parameters.add(new Param("FX3",-0.5,5));
+  
   
   
   // middlediamond.frag
@@ -100,12 +133,13 @@ void initCurrentShader() {
     oscP5.stop();
     oscP5.dispose();
   }
-  oscP5 = new OscP5(this, 4000);
+  oscP5 = new OscP5(this, 4000); // INCOMING OSC PORT
 
   //osc plug prev / next shaders 
   OscMessage labelData = new OscMessage("/1/label1");
   labelData.add(shaderList.get(currentShaderIdx).path);//append path of current shader to display
   oscP5.send(labelData, remoteAddr);//send the message
+  oscP5.send(labelData, remoteAddr2);//send the message
   //plug
   oscP5.plug(this,"prevShader","/1/push1");
   oscP5.plug(this,"nextShader","/1/push2");

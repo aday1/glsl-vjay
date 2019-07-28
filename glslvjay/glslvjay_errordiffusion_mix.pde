@@ -39,7 +39,7 @@ final int vHeight = 360;
 
 final int bufferSize = 1024;
 
-float vRes = 0.5;
+float vRes = 1.0;
 
 float fftMin=2.0;
 float fftMax=20.0;
@@ -129,7 +129,10 @@ void setup() {
   
   surface.setLocation(1080, 0);
   spout = new Spout(this);
-  background(0);
+  spout.createSender("GLSL-BACKGROUND");
+   spout.sendTexture();
+  
+  // background(0); // Why do I need this anyway? - I think its the border
   
 }
 
@@ -225,7 +228,9 @@ public void setLabel(String label, String text)
 {
   OscMessage labelData = new OscMessage(label);
   labelData.add(text);//append these items
-  oscP5.send(labelData, remoteAddr);//send the message 
+  oscP5.send(labelData, remoteAddr);//send the message
+  oscP5.send(labelData, remoteAddr2);//send the message
+  
 }
 
 void stop()
