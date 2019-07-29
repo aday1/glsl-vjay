@@ -1,55 +1,71 @@
+/*
+ * Original shader from: https://www.shadertoy.com/view/WlfXW4
+ */
+#define PROCESSING_COLOR_SHADER;
+
 #ifdef GL_ES
 precision mediump float;
 #endif
 
-#define PROCESSING_COLOR_SHADER;
-
-
+// glslsandbox uniforms
 uniform float time;
-uniform vec2 mouse;
 uniform vec2 resolution;
 
-vec3 hsv(float h, float s, float v){
-    vec4 t = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
-    vec3 p = abs(fract(vec3(h) + t.xyz) * 6.0 - vec3(t.w));
-    return v * mix(vec3(t.x), clamp(p - vec3(t.x), 0.0, 1.0), s);
+// shadertoy emulation
+#define iTime time
+#define iResolution resolution
+
+// --------[ Original ShaderToy begins here ]---------- //
+#define rotate(a) mat2(cos(a),sin(a),-sin(a),cos(a))
+
+float g = 0.0;
+
+float deCauliflower(vec3 p, vec3 s, float r, float t)
+{    
+    for (int i=0;i<6;i++){
+        p = abs(p)-s;
+        mat2 m = rotate(sin(t*0.8+0.3*sin(t))*2.0+0.8);
+        p.xy *= m;
+        p.yz *= m;
+        s *= 0.7;
+    }
+    p = abs(p)-s;
+    if (p.x < p.z) p.xz = p.zx;
+    if (p.y < p.z) p.yz = p.zy;        
+    p.z = max(0.0,p.z);
+    return length(p)-r;
+ }
+
+float map(vec3 p)
+{
+    float de = deCauliflower(p,vec3(4.5),0.01,iTime);
+    g += 0.1/(0.3+de*de*10.0); // Distance glow by balkhan
+    return deCauliflower(p,vec3(4.5),0.06,iTime+0.3);
 }
 
-vec2 c_sq(vec2 z){
-	return vec2(z.x*z.x-z.y*z.y, 2.0*z.x*z.y);
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    vec2 uv = (fragCoord*2.0-iResolution.xy)/iResolution.y;
+    vec3 ro = vec3(0.0, 0.0, 25.0+sin(iTime*0.8+sin(iTime*0.5)*0.8)*5.0);
+    ro.xz *= rotate(iTime*0.3);
+    ro.xy *= rotate(iTime*0.5);
+    vec3 w = normalize(-ro);
+    vec3 u = normalize(cross(w,vec3(0,1,0)));
+    vec3 rd = mat3(u,cross(u,w),w)*normalize(vec3(uv, 3));
+    vec3 col = vec3(0.05);
+    float t = 0.0, d;
+    for(int i = 0; i < 64; i++)
+    {
+        t += d = min(map(ro + rd * t),1.0);
+        if(d < 0.001) break;
+    }
+    col += vec3(0.0,0.7,0.3)*g*0.25;
+    col = clamp(col,0.0,1.0);
+    fragColor = vec4(col, 1);
 }
+// --------[ Original ShaderToy ends here ]---------- //
 
-vec2 f(vec2 z, vec2 c){
-	vec2 nz;
-	// nz = c_sq(z) + c;
-	nz = c_sq(vec2(z.y, z.x)) + c;
-	return nz;
-}
-
-float iteration(vec2 z, float i){
-	float log_zn, nu, iterate;
-	log_zn = log(z.x*z.x+z.y*z.y)/2.0;
-	nu = log(log_zn/log(2.0))/log(2.0);
-	iterate = i + 1.0 - nu;
-	return iterate;
-}
-
-void main( void ) {
-	vec2 pos = (gl_FragCoord.xy-0.5*resolution)/(0.5*vec2(resolution.y));
-	pos = pos*10.0;
-	pos = pos/vec2(exp2(mod(0.5*time, 17.0))) - vec2(-0.8787, -0.155);
-	float mand, v;
-	vec2 z;
-	vec3 color;
-	mand = 0.0;
-	z = vec2(0.0);
-	
-	for (float i=0.0; i<200.0; i++){
-		z = f(z, pos);
-		mand = (z.x*z.x+z.y*z.y > 256.0) && (mand==0.0) ? iteration(z, i) : mand;
-	}
-	mand = mod(mand*0.05, 1.0);
-	v = mod(mand*mand*20.0, 1.0);
-	color = hsv(mand, 1.0, v);
-	gl_FragColor = vec4(color, 1.0);
+void main(void)
+{
+    mainImage(gl_FragColor, gl_FragCoord.xy);
 }

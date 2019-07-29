@@ -78,11 +78,22 @@ void setupShaders() {
   MandleBrah.parameters.add(new Param("FX4", -0.5, 5));
 
 
-
   //BallpitBackground.frag
   GShader BallpitBackground = new GShader("BallpitBackground.frag");
   shaderList.add(BallpitBackground);
   BallpitBackground.parameters.add(new Param("FX1", -0.5, 5));
+
+  //BoxExplosion.frag
+  GShader BoxExplosion = new GShader("BoxExplosion.frag");
+  shaderList.add(BoxExplosion);
+  BoxExplosion.parameters.add(new Param("FX1", -0.5, 5));
+  BoxExplosion.parameters.add(new Param("FX2", -0.5, 5));
+  BoxExplosion.parameters.add(new Param("FX3", -0.5, 5));
+  BoxExplosion.parameters.add(new Param("FX4", -0.5, 5));
+  BoxExplosion.parameters.add(new Param("HideStars"));
+
+
+
 
 
 
@@ -95,6 +106,14 @@ void setupShaders() {
   RedOrbVortex.parameters.add(new Param("FX3", -0.5, 5));
   RedOrbVortex.parameters.add(new Param("FX4", -0.5, 5));
 
+
+//ImpulseTunnel1.frag
+  GShader ImpulseTunnel1 = new GShader("ImpulseTunnel1.frag");
+  shaderList.add(ImpulseTunnel1);
+  ImpulseTunnel1.parameters.add(new Param("FX1", -0.5, 5));
+
+  
+  
   //Cubescape shader
   GShader Cubescape = new GShader("Cubescape.frag");
   shaderList.add(Cubescape);
