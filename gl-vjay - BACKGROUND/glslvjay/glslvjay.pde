@@ -21,8 +21,10 @@ BeatListener bl;
 
 //osc
 OscP5 oscP5;
-NetAddress remoteAddr; //address of your mobile osc device
+NetAddress remoteAddr1; //address of your TouchOSC device1
 NetAddress remoteAddr2; //address of Curtis osc device
+NetAddress remoteAddr3; //address of your TouchOSC device2
+NetAddress remoteAddr4; //address of your TouchOSC device2
 
 
 // Spout
@@ -41,7 +43,10 @@ final int vHeight = 360;
 
 final int bufferSize = 1024;
 
-float vRes = 1.0;
+// SET TO 1.0 FOR 1:1 RATIO *********************************************************************************************************************************************************************************************************************************************
+float vRes = 0.5; // Display Scaling
+// SET TO 1.0 FOR 1:1 RATIO *********************************************************************************************************************************************************************************************************************************************
+
 
 float fftMin=2.0;
 float fftMax=20.0;
@@ -50,16 +55,23 @@ void settings() {
   //fullScreen(P2D);
   size(int(vRes*vWidth), int(vRes*vHeight), P3D);
  }
-   
    public void keyReleased(){
-  if(key == '-') currentShaderIdx = (currentShaderIdx - 1);
-  if(key == '=') currentShaderIdx = (currentShaderIdx + 1);  
-   }
-  
-   public void keyPressed(){
 
+  // Great Function - but adds a little laggy delay and sucks the flow -- TODO, FIX -- HIT T or R instead
+    if(key == '-') target();
+    if(key == '=') target(); 
+   }
+     
+  
+  public void keyPressed(){
+ 
   if(key == 'f') text(int(frameRate), 10, 30);
-  if(key == 'r') restart(); // Reload the shader routine if editing outside - LIVECODING ENABLE!!!
+  
+  if(key == 'r') restart(); // Reload the shader routine if editing outside - LIVECODING ENABLE!!! - and resend OSC
+  if(key == 't') target(); // Resend OSC messages for target only
+  
+  if(key == '-') currentShaderIdx = (currentShaderIdx - 1);
+  if(key == '=') currentShaderIdx = (currentShaderIdx + 1);
   
   if(key == '1') currentShaderIdx = 1;
   if(key == '2') currentShaderIdx = 2;
@@ -82,6 +94,19 @@ void settings() {
   if(key == '*') currentShaderIdx = 18;
   if(key == '(') currentShaderIdx = 19;
   if(key == ')') currentShaderIdx = 20; 
+  
+  if(key == 'Q') currentShaderIdx = 20;
+  if(key == 'W') currentShaderIdx = 22;
+  if(key == 'E') currentShaderIdx = 23;
+  if(key == 'R') currentShaderIdx = 24;
+  if(key == 'T') currentShaderIdx = 25;
+  if(key == 'Y') currentShaderIdx = 26;
+  if(key == 'U') currentShaderIdx = 27;
+  if(key == 'I') currentShaderIdx = 28;
+  if(key == 'I') currentShaderIdx = 29;
+  if(key == 'O') currentShaderIdx = 30; 
+  
+    
 
   if(key == 'a') curtis("aday", 1.0);
   if(key == 'b') curtis("aday", 0.0);
@@ -95,9 +120,16 @@ void settings() {
   }
 
   
+  
+  void target() { // Resend OSC messages to clients (slightly faster than restart)
+  initCurrentShader();
+  }
+  
+  
   void restart() {
   shaderList.clear();
   setupShaders();
+  initCurrentShader();
   }
   
   
@@ -107,8 +139,10 @@ void setup() {
   scene = createGraphics(int(vRes*vWidth), int(vRes*vHeight), P3D);
 
   //change this to the ip address of your mobile osc device
-  remoteAddr = new NetAddress("10.1.1.85", 8000); // TOUCHOSC
+  remoteAddr1 = new NetAddress("10.1.1.85", 8000); // TouchOSC
   remoteAddr2 = new NetAddress("10.1.1.130", 4020); // CURTIS
+  remoteAddr3 = new NetAddress("10.1.1.137", 8000); // TouchOSC
+  remoteAddr4 = new NetAddress("10.1.1.135", 8000); // TouchOSC
   
   //init minim
   minim = new Minim(this);
@@ -230,8 +264,10 @@ public void setLabel(String label, String text)
 {
   OscMessage labelData = new OscMessage(label);
   labelData.add(text);//append these items
-  oscP5.send(labelData, remoteAddr);//send the message
+  oscP5.send(labelData, remoteAddr1);//send the message
   oscP5.send(labelData, remoteAddr2);//send the message
+  oscP5.send(labelData, remoteAddr3);//send the message
+  oscP5.send(labelData, remoteAddr4);//send the message
   
 }
 
