@@ -31,7 +31,7 @@ vec4 iMouse = vec4(mouse.xy,mousePressed.xy);
 
 
 //shader specif uniforms
-uniform float hideStars;
+uniform float HideStars;
 
 // ------- Below is the unmodified Shadertoy code ----------
 
@@ -45,28 +45,27 @@ float field(in vec3 p,float s) {
 	float accum = s/4.;
 	float prev = 0.;
 	float tw = 0.;
-	for (int i = 0; i < 26; ++i) {
+for (int i = 0; i < 18; ++i) {
 		float mag = dot(p, p);
 		p = abs(p) / mag + vec3(-.5, -.4, -1.5);
 		float w = exp(-float(i) / 7.);
 		accum += w * exp(-strength * pow(abs(mag - prev), 2.2));
 		tw += w;
-		prev = mag;
-	}
+		prev = mag;	}
 	return max(0., 5. * accum / tw - .7);
 }
 
 // Less iterations for second layer
 float field2(in vec3 p, float s) {
-	float strength = 7. + .03 * log(1.e-6 + fract(sin(iGlobalTime) * 4373.11));
+	float strength = 10. + .55 * log(1.e-6 + fract(sin(iGlobalTime) * 4373.11));
 	float accum = s/4.;
 	float prev = 0.;
 	float tw = 0.;
 	for (int i = 0; i < 18; ++i) {
 		float mag = dot(p, p);
 		p = abs(p) / mag + vec3(-.5, -.4, -1.5);
-		float w = exp(-float(i) / 7.);
-		accum += w * exp(-strength * pow(abs(mag - prev), 2.2));
+		float w = exp(-float(i) / 5.);
+		accum += w * exp(-strength * pow(abs(mag - prev), 3.6)); // Fix strenght?
 		tw += w;
 		prev = mag;
 	}
@@ -120,7 +119,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 	
 	fragColor = mix(freqs[3]-.3, 1., v) * vec4(1.5*freqs[2] * t * t* t , 1.2*freqs[1] * t * t, freqs[3]*t, 1.0)+c2;
 	
-	if (hideStars==0.0)
+	if (HideStars==0.0)
 		fragColor += starcolor;
 	
 	//alpha blend
@@ -147,7 +146,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 void main( void )
 {
 	vec2 p = gl_FragCoord.xy;
-	vec4 mycol = vec4(0.0,0.0,0.0,0.0);
+	vec4 mycol = vec4(4.0,3.0,0.0,0.0);
 	mainImage(mycol, p);
 	gl_FragColor = mycol;
 }

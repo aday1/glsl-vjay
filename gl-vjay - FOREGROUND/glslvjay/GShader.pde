@@ -278,7 +278,7 @@ class GShader
       //bind and set color picker 1 
       OscMessage labelData = new OscMessage("/2/colorlabel1");
       labelData.add(color1name);//append these items
-      oscP5.send(labelData, remoteAddr);//send the message
+      oscP5.send(labelData, remoteAddr1);//send the message
       oscP5.plug(this,"setR1","/2/rotary1");
       oscP5.plug(this,"setG1","/2/rotary2");
       oscP5.plug(this,"setB1","/2/rotary3");
@@ -290,7 +290,7 @@ class GShader
       //bind and set color picker 2 
       OscMessage labelData = new OscMessage("/2/colorlabel2");
       labelData.add(color2name);//append these items
-      oscP5.send(labelData, remoteAddr);//send the message
+      oscP5.send(labelData, remoteAddr1);//send the message
       oscP5.plug(this,"setR2","/2/rotary5");
       oscP5.plug(this,"setG2","/2/rotary6");
       oscP5.plug(this,"setB2","/2/rotary7");
