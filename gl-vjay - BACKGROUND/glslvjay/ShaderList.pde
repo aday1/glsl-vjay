@@ -120,9 +120,9 @@ void setupShaders() {
   // MandleCircle.glsl FIRST
   GShader RedOrbVortex = new GShader("RedOrbVortex.frag");
   shaderList.add(RedOrbVortex);
-  RedOrbVortex.parameters.add(new Param("FX1", -0.5, 5));
+  RedOrbVortex.parameters.add(new Param("FX1", 0.2, -0.2));
   RedOrbVortex.parameters.add(new Param("FX2", 1, 5));
-  RedOrbVortex.parameters.add(new Param("FX3", -0.5, 5));
+  RedOrbVortex.parameters.add(new Param("FX3", -0.5, 0.3));
   RedOrbVortex.parameters.add(new Param("FX4", -0.5, 5));
 
 
@@ -134,13 +134,72 @@ void setupShaders() {
 //GridTunnel.frag
   GShader GridTunnel = new GShader("GridTunnel.frag");
   shaderList.add(GridTunnel);
-  GridTunnel.parameters.add(new Param("FX1", 1, -1.5));
-  GridTunnel.parameters.add(new Param("FX2", 1, -1.5));
-  GridTunnel.parameters.add(new Param("FX3", 1, -1.5));
-  GridTunnel.parameters.add(new Param("FX4", 1, -1.5));
-
-
+  GridTunnel.parameters.add(new Param("FX2", -0.1, 1));
+  GridTunnel.parameters.add(new Param("FX2", -15.0, 50));
+  GridTunnel.parameters.add(new Param("FX3", 0.9, 0.0));
+  GridTunnel.parameters.add(new Param("FX4", 1, 0));
+  GridTunnel.parameters.add(new Param("scale", 1.0, 0.0));
   
+
+//FireVoxtex.frag
+  GShader FireVortex = new GShader("FireVoxtex.frag");
+  shaderList.add(FireVortex);
+  FireVortex.parameters.add(new Param("FX1", 0.16769314, 0.75243664));
+  FireVortex.parameters.add(new Param("FX2", 0, 1));
+  FireVortex.parameters.add(new Param("brightness", 10, 50));
+  FireVortex.parameters.add(new Param("scale", 1, 2.0289135));
+  FireVortex.parameters.add(new Param("rotation", -1.0, 1.0));
+
+  //Hellscape.frag
+  GShader Hellscape = new GShader("Hellscape.frag");
+  shaderList.add(Hellscape);
+  Hellscape.parameters.add(new Param("FX1", 1.3856834, 0.04794734));
+  Hellscape.parameters.add(new Param("col1", 1, -1));
+  Hellscape.parameters.add(new Param("movement", 1, -1));
+  Hellscape.parameters.add(new Param("rotation", 1.0, -1.0));
+
+  //Hellline.frag
+  GShader Hellline = new GShader("Hellline.frag");
+  shaderList.add(Hellline);
+  Hellline.parameters.add(new Param("FX1", 1.3856834, 0.04794734));
+  Hellline.parameters.add(new Param("col1", 1, -1));
+  Hellline.parameters.add(new Param("movement", 1, -1));
+  Hellline.parameters.add(new Param("rotation", 1.0, -1.0));
+
+  //AlienOrbPlanet.frag
+  GShader AlienOrbPlanet = new GShader("AlienOrbPlanet.frag");
+  shaderList.add(AlienOrbPlanet);
+  AlienOrbPlanet.parameters.add(new Param("FX1", 1, 0));
+  AlienOrbPlanet.parameters.add(new Param("lightning", 1, 0));
+  AlienOrbPlanet.parameters.add(new Param("rotation", 1, 0));
+  
+  
+  //Hexiworld.frag
+  GShader Hexiworld = new GShader("Hexiworld.frag");
+  shaderList.add(Hexiworld);
+  Hexiworld.parameters.add(new Param("FX1", 1.0, 0.0));
+  Hexiworld.parameters.add(new Param("FX2", 1.0, 0.0));
+  Hexiworld.parameters.add(new Param("rotation", 1.0, 0.0));
+  
+  
+//TorusViewPort.frag
+  GShader TorusViewPort = new GShader("TorusViewPort.frag");
+  shaderList.add(TorusViewPort);
+  TorusViewPort.parameters.add(new Param("FX1", 0.0, 1.0));
+  TorusViewPort.parameters.add(new Param("FX2", 0.0, 1.0));
+  TorusViewPort.parameters.add(new Param("FX3", 0.0, 1.0));
+  TorusViewPort.parameters.add(new Param("FX4", 0.0, 1.0));
+  
+  
+  //OrbCube.frag
+  GShader OrbCube = new GShader("OrbCube.frag");
+  shaderList.add(OrbCube);
+  OrbCube.parameters.add(new Param("FX1", 1, 0));
+  OrbCube.parameters.add(new Param("FX1", 1, 0));
+  OrbCube.parameters.add(new Param("FX1", 1, 0));
+  OrbCube.parameters.add(new Param("FX1", 1, 0));
+  
+
   
   //Cubescape shader
   GShader Cubescape = new GShader("Cubescape.frag");

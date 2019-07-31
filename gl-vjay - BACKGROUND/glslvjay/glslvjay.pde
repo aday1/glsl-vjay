@@ -95,16 +95,16 @@ void settings() {
   if(key == '(') currentShaderIdx = 19;
   if(key == ')') currentShaderIdx = 20; 
   
-  if(key == 'Q') currentShaderIdx = 20;
-  if(key == 'W') currentShaderIdx = 22;
-  if(key == 'E') currentShaderIdx = 23;
-  if(key == 'R') currentShaderIdx = 24;
-  if(key == 'T') currentShaderIdx = 25;
-  if(key == 'Y') currentShaderIdx = 26;
-  if(key == 'U') currentShaderIdx = 27;
-  if(key == 'I') currentShaderIdx = 28;
-  if(key == 'I') currentShaderIdx = 29;
-  if(key == 'O') currentShaderIdx = 30; 
+  //if(key == 'Q') currentShaderIdx = 20;
+  //if(key == 'W') currentShaderIdx = 22;
+  //if(key == 'E') currentShaderIdx = 23;
+  //if(key == 'R') currentShaderIdx = 24;
+  //if(key == 'T') currentShaderIdx = 25;
+  //if(key == 'Y') currentShaderIdx = 26;
+  //if(key == 'U') currentShaderIdx = 27;
+  //if(key == 'I') currentShaderIdx = 28;
+  //if(key == 'I') currentShaderIdx = 29;
+  //if(key == 'O') currentShaderIdx = 30; 
   
     
 
