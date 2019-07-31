@@ -38,8 +38,8 @@ int oldMillis = 0;
 
 boolean doSlideshow = false;
 
-final int vWidth = 640;
-final int vHeight = 480;
+final int vWidth = 800;
+final int vHeight = 600;
 
 final int bufferSize = 1024;
 

@@ -22,89 +22,78 @@ void setupShaders() {
   GShader InputSound = new GShader("InputSound.frag");
   shaderList.add(InputSound);
 
-
-  //Galaxy shader
-  GShader Galaxy = new GShader("Galaxy.frag");
-  shaderList.add(Galaxy);
-  Galaxy.parameters.add(new Param("HideStars"));
-  //Galaxy.tex1files = new String[]{ "circuit.jpg" };
-
-  //ringOfColor shader
-  //GShader ringOfColor = new GShader("ringofcolor.frag");
-  //shaderList.add(ringOfColor);
-  //Galaxy.parameters.add(new Param("hideStars"));
-  //Galaxy.tex1files = new String[]{ "seamlesstex/" };
-
-  // x.glsl FIRST
-  GShader X = new GShader("X.frag");
-  shaderList.add(X);
-  X.parameters.add(new Param("FX1", -0.6, 1));
-  X.parameters.add(new Param("FX2", -0.5, 0.5));
-  X.parameters.add(new Param("FX3", -0.5, 5));
-  X.parameters.add(new Param("FX4", -0.5, 5));
-
-  X.parameters.add(new Param("SHIFTX1", -0.5, 5));
-  X.parameters.add(new Param("SHIFTY1", -0.5, 5));
-  X.parameters.add(new Param("SHIFTX2", -0.5, 5));
-  X.parameters.add(new Param("SHIFTY2", -0.5, 5));
-
-  //DiamondVortex.frag
-  GShader DiamondVortex = new GShader("DiamondVortex.frag");
-  shaderList.add(DiamondVortex);
-  DiamondVortex.parameters.add(new Param("FX1", 9.0, -0.6));
-  DiamondVortex.parameters.add(new Param("FX2", -5.0, 5.5));
-  DiamondVortex.parameters.add(new Param("FX3", -0.5, 5));
-  DiamondVortex.parameters.add(new Param("FX4", -0.5, 5));
-  DiamondVortex.parameters.add(new Param("COL1", -0.5, 5));
-  DiamondVortex.parameters.add(new Param("COL2", -0.5, 5));
-  DiamondVortex.parameters.add(new Param("COL3", 1.2, 2.8));
-
-
-  //MandleScale.frag
-  GShader MandleScale = new GShader("MandleScale.frag");
-  shaderList.add(MandleScale);
-  MandleScale.parameters.add(new Param("SCALE", -0.5, 5));
-
-
-  // Binary.frag FIRST
-  GShader Plasmah = new GShader("Binary.frag");
-  shaderList.add(Plasmah);
-  Plasmah.parameters.add(new Param("FX1", 0.0, 1.0));
+ 
+  // PentagramFG.glsl PENTAGRAM1
+  GShader PentagramFG = new GShader("PentagramFG.frag");
+  shaderList.add(PentagramFG);
+  PentagramFG.parameters.add(new Param("FX1", 0.2, -0.2));
   
 
-  // MandleCircle.frag FIRST
-  GShader MandleCircle = new GShader("MandleCircle.frag");
-  shaderList.add(MandleCircle);
-  MandleCircle.parameters.add(new Param("FX1", -0.5, 5));
-  MandleCircle.parameters.add(new Param("FX2", -0.5, 5));
-  MandleCircle.parameters.add(new Param("FX3", -0.5, 5));
+  // Summoner.glsl Summoner
+  GShader Summoner = new GShader("Summoner.frag");
+  shaderList.add(Summoner);
+  Summoner.parameters.add(new Param("FX1", 0.2, -0.2));
+  Summoner.parameters.add(new Param("FX2", 5, 0));
 
-// MandleBrah.frag
-  GShader MandleBrah = new GShader("MandleBrah.frag");
-  shaderList.add(MandleBrah);
-  
-  MandleBrah.parameters.add(new Param("glow", 1.5, 0.1));
-  MandleBrah.parameters.add(new Param("glow2", 0.3, 1.0));
-  MandleBrah.parameters.add(new Param("orb", 0.0, 10.0));
-  MandleBrah.parameters.add(new Param("scale", 0.4, 0.4));
-  MandleBrah.parameters.add(new Param("scale2", 5, -5));
+// LINEMATH.glsl THIRD
+  GShader LINEMATH = new GShader("LINEMATH.frag");
+  shaderList.add(LINEMATH);
+  LINEMATH.parameters.add(new Param("FX1", 100.0, -100.0));
+  LINEMATH.parameters.add(new Param("FX2", 100.0, -100.0));
+  LINEMATH.parameters.add(new Param("FX3", 100.0, -100.0));
+  LINEMATH.parameters.add(new Param("FX4", 100.0, -100.0));
+
+// DRAW.glsl DRAW
+  GShader DRAW = new GShader("DRAW.frag");
+  shaderList.add(DRAW);
+  DRAW.parameters.add(new Param("FX1", -1.0, 1.0));
+  DRAW.parameters.add(new Param("FX2", 100.0, -100));
+  DRAW.parameters.add(new Param("FX3", 100.0, -100));
+  DRAW.parameters.add(new Param("FX4", 100.0, -100));
+
+// FIFTH.glsl FIFTH
+  GShader FIFTH = new GShader("FIFTH.frag");
+  shaderList.add(FIFTH);
+  FIFTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  FIFTH.parameters.add(new Param("FX2", 1, 5));
+  FIFTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  FIFTH.parameters.add(new Param("FX4", -0.5, 5));
+
+// SIXTH.glsl SIXTH
+  GShader SIXTH = new GShader("SIXTH.frag");
+  shaderList.add(SIXTH);
+  SIXTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  SIXTH.parameters.add(new Param("FX2", 1, 5));
+  SIXTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  SIXTH.parameters.add(new Param("FX4", -0.5, 5));
 
 
-  //BallpitBackground.frag
-  GShader BallpitBackground = new GShader("BallpitBackground.frag");
-  shaderList.add(BallpitBackground);
-  BallpitBackground.parameters.add(new Param("FX1", -0.5, 5));
+// SEVENTH.glsl SEVENTH
+  GShader SEVENTH = new GShader("SEVENTH.frag");
+  shaderList.add(SEVENTH);
+  SEVENTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  SEVENTH.parameters.add(new Param("FX2", 1, 5));
+  SEVENTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  SEVENTH.parameters.add(new Param("FX4", -0.5, 5));
 
-  //BoxExplosion.frag
-  GShader BoxExplosion = new GShader("BoxExplosion.frag");
-  shaderList.add(BoxExplosion);
-  BoxExplosion.parameters.add(new Param("FX1", -50.0, -5));
-  BoxExplosion.parameters.add(new Param("FX2", 0.0, 1));
-  BoxExplosion.parameters.add(new Param("FX3", 0.0, 1));
-  BoxExplosion.parameters.add(new Param("FX4", 0.0, 1));
-  BoxExplosion.parameters.add(new Param("Scale", 0.0, 1));
-  
-  
+
+// EIGHTH.glsl EIGHTH
+  GShader EIGHTH = new GShader("EIGHTH.frag");
+  shaderList.add(EIGHTH);
+  EIGHTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  EIGHTH.parameters.add(new Param("FX2", 1, 5));
+  EIGHTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  EIGHTH.parameters.add(new Param("FX4", -0.5, 5));
+
+
+// NINETH.glsl NINETH
+  GShader NINETH = new GShader("NINETH.frag");
+  shaderList.add(NINETH);
+  NINETH.parameters.add(new Param("FX1", 0.2, -0.2));
+  NINETH.parameters.add(new Param("FX2", 1, 5));
+  NINETH.parameters.add(new Param("FX3", -0.5, 0.3));
+  NINETH.parameters.add(new Param("FX4", -0.5, 5));
+
 
 /*
   __  ___  
@@ -115,98 +104,86 @@ void setupShaders() {
   |_|\___/ 
 */
 
+// TENTH.glsl TENTH
+  GShader TENTH = new GShader("TENTH.frag");
+  shaderList.add(TENTH);
+  TENTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  TENTH.parameters.add(new Param("FX2", 1, 5));
+  TENTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  TENTH.parameters.add(new Param("FX4", -0.5, 5));
 
-  // RedOrbVortex.frag
-  // MandleCircle.glsl FIRST
-  GShader RedOrbVortex = new GShader("RedOrbVortex.frag");
-  shaderList.add(RedOrbVortex);
-  RedOrbVortex.parameters.add(new Param("FX1", 0.2, -0.2));
-  RedOrbVortex.parameters.add(new Param("FX2", 1, 5));
-  RedOrbVortex.parameters.add(new Param("FX3", -0.5, 0.3));
-  RedOrbVortex.parameters.add(new Param("FX4", -0.5, 5));
+// ELEVENTH.glsl ELEVENTH
+  GShader ELEVENTH = new GShader("ELEVENTH.frag");
+  shaderList.add(ELEVENTH);
+  ELEVENTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  ELEVENTH.parameters.add(new Param("FX2", 1, 5));
+  ELEVENTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  ELEVENTH.parameters.add(new Param("FX4", -0.5, 5));
 
+// TWELTH.glsl TWELTH
+  GShader TWELTH = new GShader("TWELTH.frag");
+  shaderList.add(TWELTH);
+  TWELTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  TWELTH.parameters.add(new Param("FX2", 1, 5));
+  TWELTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  TWELTH.parameters.add(new Param("FX4", -0.5, 5));
 
-//ImpulseTunnel1.frag
-  GShader ImpulseTunnel1 = new GShader("ImpulseTunnel1.frag");
-  shaderList.add(ImpulseTunnel1);
-  ImpulseTunnel1.parameters.add(new Param("FX1", -0.5, 5));
+// THIRTHEENTH.glsl THIRTHEENTH
+  GShader THIRTHEENTH = new GShader("THIRTHEENTH.frag");
+  shaderList.add(THIRTHEENTH);
+  THIRTHEENTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  THIRTHEENTH.parameters.add(new Param("FX2", 1, 5));
+  THIRTHEENTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  THIRTHEENTH.parameters.add(new Param("FX4", -0.5, 5));
 
-//GridTunnel.frag
-  GShader GridTunnel = new GShader("GridTunnel.frag");
-  shaderList.add(GridTunnel);
-  GridTunnel.parameters.add(new Param("FX2", -0.1, 1));
-  GridTunnel.parameters.add(new Param("FX2", -15.0, 50));
-  GridTunnel.parameters.add(new Param("FX3", 0.9, 0.0));
-  GridTunnel.parameters.add(new Param("FX4", 1, 0));
-  GridTunnel.parameters.add(new Param("scale", 1.0, 0.0));
-  
+// FOURTEENTH.glsl FOURTEENTH
+  GShader FOURTEENTH = new GShader("FOURTEENTH.frag");
+  shaderList.add(FOURTEENTH);
+  FOURTEENTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  FOURTEENTH.parameters.add(new Param("FX2", 1, 5));
+  FOURTEENTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  FOURTEENTH.parameters.add(new Param("FX4", -0.5, 5));
 
-//FireVoxtex.frag
-  GShader FireVortex = new GShader("FireVoxtex.frag");
-  shaderList.add(FireVortex);
-  FireVortex.parameters.add(new Param("FX1", 0.16769314, 0.75243664));
-  FireVortex.parameters.add(new Param("FX2", 0, 1));
-  FireVortex.parameters.add(new Param("brightness", 10, 50));
-  FireVortex.parameters.add(new Param("scale", 1, 2.0289135));
-  FireVortex.parameters.add(new Param("rotation", -1.0, 1.0));
+// FIFTHEENTH.glsl FIFTHEENTH
+  GShader FIFTHEENTH = new GShader("FIFTHEENTH.frag");
+  shaderList.add(FIFTHEENTH);
+  FIFTHEENTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  FIFTHEENTH.parameters.add(new Param("FX2", 1, 5));
+  FIFTHEENTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  FIFTHEENTH.parameters.add(new Param("FX4", -0.5, 5));
 
-  //Hellscape.frag
-  GShader Hellscape = new GShader("Hellscape.frag");
-  shaderList.add(Hellscape);
-  Hellscape.parameters.add(new Param("FX1", 1.3856834, 0.04794734));
-  Hellscape.parameters.add(new Param("col1", 1, -1));
-  Hellscape.parameters.add(new Param("movement", 1, -1));
-  Hellscape.parameters.add(new Param("rotation", 1.0, -1.0));
+// SIXTHEENTH.glsl SIXTHEENTH
+  GShader SIXTHEENTH = new GShader("SIXTHEENTH.frag");
+  shaderList.add(SIXTHEENTH);
+  SIXTHEENTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  SIXTHEENTH.parameters.add(new Param("FX2", 1, 5));
+  SIXTHEENTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  SIXTHEENTH.parameters.add(new Param("FX4", -0.5, 5));
 
-  //Hellline.frag
-  GShader Hellline = new GShader("Hellline.frag");
-  shaderList.add(Hellline);
-  Hellline.parameters.add(new Param("FX1", 1.3856834, 0.04794734));
-  Hellline.parameters.add(new Param("col1", 1, -1));
-  Hellline.parameters.add(new Param("movement", 1, -1));
-  Hellline.parameters.add(new Param("rotation", 1.0, -1.0));
+// SEVENTEEN.glsl SEVENTEEN
+  GShader SEVENTEEN = new GShader("SEVENTEEN.frag");
+  shaderList.add(SEVENTEEN);
+  SEVENTEEN.parameters.add(new Param("FX1", 0.2, -0.2));
+  SEVENTEEN.parameters.add(new Param("FX2", 1, 5));
+  SEVENTEEN.parameters.add(new Param("FX3", -0.5, 0.3));
+  SEVENTEEN.parameters.add(new Param("FX4", -0.5, 5));
 
-  //AlienOrbPlanet.frag
-  GShader AlienOrbPlanet = new GShader("AlienOrbPlanet.frag");
-  shaderList.add(AlienOrbPlanet);
-  AlienOrbPlanet.parameters.add(new Param("FX1", 1, 0));
-  AlienOrbPlanet.parameters.add(new Param("lightning", 1, 0));
-  AlienOrbPlanet.parameters.add(new Param("rotation", 1, 0));
-  
-  
-  //Hexiworld.frag
-  GShader Hexiworld = new GShader("Hexiworld.frag");
-  shaderList.add(Hexiworld);
-  Hexiworld.parameters.add(new Param("FX1", 1.0, 0.0));
-  Hexiworld.parameters.add(new Param("FX2", 1.0, 0.0));
-  Hexiworld.parameters.add(new Param("rotation", 1.0, 0.0));
-  
-  
-//TorusViewPort.frag
-  GShader TorusViewPort = new GShader("TorusViewPort.frag");
-  shaderList.add(TorusViewPort);
-  TorusViewPort.parameters.add(new Param("FX1", 0.0, 1.0));
-  TorusViewPort.parameters.add(new Param("FX2", 0.0, 1.0));
-  TorusViewPort.parameters.add(new Param("FX3", 0.0, 1.0));
-  TorusViewPort.parameters.add(new Param("FX4", 0.0, 1.0));
-  
-  
-  //OrbCube.frag
-  GShader OrbCube = new GShader("OrbCube.frag");
-  shaderList.add(OrbCube);
-  OrbCube.parameters.add(new Param("FX1", 1, 0));
-  OrbCube.parameters.add(new Param("FX1", 1, 0));
-  OrbCube.parameters.add(new Param("FX1", 1, 0));
-  OrbCube.parameters.add(new Param("FX1", 1, 0));
-  
+// EIGHTEENTH.glsl EIGHTEENTH
+  GShader EIGHTEENTH = new GShader("EIGHTEENTH.frag");
+  shaderList.add(EIGHTEENTH);
+  EIGHTEENTH.parameters.add(new Param("FX1", 0.2, -0.2));
+  EIGHTEENTH.parameters.add(new Param("FX2", 1, 5));
+  EIGHTEENTH.parameters.add(new Param("FX3", -0.5, 0.3));
+  EIGHTEENTH.parameters.add(new Param("FX4", -0.5, 5));
 
-  
-  //Cubescape shader
-  GShader Cubescape = new GShader("Cubescape.frag");
-  shaderList.add(Cubescape);
-  Cubescape.parameters.add(new Param("Brightness", -0.5, 5));
-  Cubescape.parameters.add(new Param("Rotation", -1, 1));
-  Cubescape.tex1files = new String[]{ "circuit.jpg" };
+// NINETEEN.glsl NINETEEN
+  GShader NINETEEN = new GShader("NINETEEN.frag");
+  shaderList.add(NINETEEN);
+  NINETEEN.parameters.add(new Param("FX1", 0.2, -0.2));
+  NINETEEN.parameters.add(new Param("FX2", 1, 5));
+  NINETEEN.parameters.add(new Param("FX3", -0.5, 0.3));
+  NINETEEN.parameters.add(new Param("FX4", -0.5, 5));
+
 
 
 
@@ -218,7 +195,90 @@ void setupShaders() {
   / /_| |_| |
  |____|\___/ 
              
-*/                         
+*/           
+
+// TWENTY.glsl TWENTY
+  GShader TWENTY = new GShader("TWENTY.frag");
+  shaderList.add(TWENTY);
+  TWENTY.parameters.add(new Param("FX1", 0.2, -0.2));
+  TWENTY.parameters.add(new Param("FX2", 1, 5));
+  TWENTY.parameters.add(new Param("FX3", -0.5, 0.3));
+  TWENTY.parameters.add(new Param("FX4", -0.5, 5));
+
+// TWENTYTWO.glsl TWENTYTWO
+  GShader TWENTYTWO = new GShader("TWENTYTWO.frag");
+  shaderList.add(TWENTYTWO);
+  TWENTYTWO.parameters.add(new Param("FX1", 0.2, -0.2));
+  TWENTYTWO.parameters.add(new Param("FX2", 1, 5));
+  TWENTYTWO.parameters.add(new Param("FX3", -0.5, 0.3));
+  TWENTYTWO.parameters.add(new Param("FX4", -0.5, 5));
+
+// TWENTYTHREE.glsl TWENTYTHREE
+  GShader TWENTYTHREE = new GShader("TWENTYTHREE.frag");
+  shaderList.add(TWENTYTHREE);
+  TWENTYTHREE.parameters.add(new Param("FX1", 0.2, -0.2));
+  TWENTYTHREE.parameters.add(new Param("FX2", 1, 5));
+  TWENTYTHREE.parameters.add(new Param("FX3", -0.5, 0.3));
+  TWENTYTHREE.parameters.add(new Param("FX4", -0.5, 5));
+
+// TWENTYFOUR.glsl TWENTYFOUR
+  GShader TWENTYFOUR = new GShader("TWENTYFOUR.frag");
+  shaderList.add(TWENTYFOUR);
+  TWENTYFOUR.parameters.add(new Param("FX1", 0.2, -0.2));
+  TWENTYFOUR.parameters.add(new Param("FX2", 1, 5));
+  TWENTYFOUR.parameters.add(new Param("FX3", -0.5, 0.3));
+  TWENTYFOUR.parameters.add(new Param("FX4", -0.5, 5));
+
+// TWENTYFIVE.glsl TWENTYFIVE
+  GShader TWENTYFIVE = new GShader("TWENTYFIVE.frag");
+  shaderList.add(TWENTYFIVE);
+  TWENTYFIVE.parameters.add(new Param("FX1", 0.2, -0.2));
+  TWENTYFIVE.parameters.add(new Param("FX2", 1, 5));
+  TWENTYFIVE.parameters.add(new Param("FX3", -0.5, 0.3));
+  TWENTYFIVE.parameters.add(new Param("FX4", -0.5, 5));
+
+// TWENTYSIX.glsl TWENTYSIX
+  GShader TWENTYSIX = new GShader("TWENTYSIX.frag");
+  shaderList.add(TWENTYSIX);
+  TWENTYSIX.parameters.add(new Param("FX1", 0.2, -0.2));
+  TWENTYSIX.parameters.add(new Param("FX2", 1, 5));
+  TWENTYSIX.parameters.add(new Param("FX3", -0.5, 0.3));
+  TWENTYSIX.parameters.add(new Param("FX4", -0.5, 5));
+
+// TWENTYSEVEN.glsl TWENTYSEVEN
+  GShader TWENTYSEVEN = new GShader("TWENTYSEVEN.frag");
+  shaderList.add(TWENTYSEVEN);
+  TWENTYSEVEN.parameters.add(new Param("FX1", 0.2, -0.2));
+  TWENTYSEVEN.parameters.add(new Param("FX2", 1, 5));
+  TWENTYSEVEN.parameters.add(new Param("FX3", -0.5, 0.3));
+  TWENTYSEVEN.parameters.add(new Param("FX4", -0.5, 5));
+
+// TWENTYEIGHT.glsl TWENTYEIGHT
+  GShader TWENTYEIGHT = new GShader("TWENTYEIGHT.frag");
+  shaderList.add(TWENTYEIGHT);
+  TWENTYEIGHT.parameters.add(new Param("FX1", 0.2, -0.2));
+  TWENTYEIGHT.parameters.add(new Param("FX2", 1, 5));
+  TWENTYEIGHT.parameters.add(new Param("FX3", -0.5, 0.3));
+  TWENTYEIGHT.parameters.add(new Param("FX4", -0.5, 5));
+
+// TWENTYNINE.glsl TWENTYNINE
+  GShader TWENTYNINE = new GShader("TWENTYNINE.frag");
+  shaderList.add(TWENTYNINE);
+  TWENTYNINE.parameters.add(new Param("FX1", 0.2, -0.2));
+  TWENTYNINE.parameters.add(new Param("FX2", 1, 5));
+  TWENTYNINE.parameters.add(new Param("FX3", -0.5, 0.3));
+  TWENTYNINE.parameters.add(new Param("FX4", -0.5, 5));
+
+// THIRTY.glsl THIRTY
+  GShader THIRTY = new GShader("THIRTY.frag");
+  shaderList.add(THIRTY);
+  THIRTY.parameters.add(new Param("FX1", 0.2, -0.2));
+  THIRTY.parameters.add(new Param("FX2", 1, 5));
+  THIRTY.parameters.add(new Param("FX3", -0.5, 0.3));
+  THIRTY.parameters.add(new Param("FX4", -0.5, 5));
+
+
+
 
 
 /*

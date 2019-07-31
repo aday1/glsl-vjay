@@ -199,14 +199,22 @@ void setupShaders() {
   OrbCube.parameters.add(new Param("FX1", 1, 0));
   OrbCube.parameters.add(new Param("FX1", 1, 0));
   
-
   
-  //Cubescape shader
-  GShader Cubescape = new GShader("Cubescape.frag");
-  shaderList.add(Cubescape);
-  Cubescape.parameters.add(new Param("Brightness", -0.5, 5));
-  Cubescape.parameters.add(new Param("Rotation", -1, 1));
-  Cubescape.tex1files = new String[]{ "circuit.jpg" };
+  //PentagramBG.frag
+  GShader PentagramBG = new GShader("PentagramBG.frag");
+  shaderList.add(PentagramBG);
+  PentagramBG.parameters.add(new Param("FX1", 1, 0));
+  PentagramBG.parameters.add(new Param("FX2", 1, 0));
+  PentagramBG.parameters.add(new Param("FX3", 1, 0));
+  PentagramBG.parameters.add(new Param("FX4", 1, 0));
+  
+  PentagramBG.parameters.add(new Param("Pentabuild", 1, 0));
+  PentagramBG.parameters.add(new Param("Typeface", 1, 0));
+  PentagramBG.parameters.add(new Param("Mirror", 1, 0));
+  PentagramBG.parameters.add(new Param("EvilFX1", 1, 0));
+  PentagramBG.parameters.add(new Param("EvilFX2", 1, 0));
+  
+
 
 
 
